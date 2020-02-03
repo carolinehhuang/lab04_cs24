@@ -25,6 +25,23 @@ namespace lab04_2
     Words::~Words(){
 	    delete [] data;
     }
+
+    Words& Words::operator=(const Words &source){
+	    std::string *newData;
+	    if ( this == &source){
+		    return *this;
+	    }
+	    if (capacity != source.get_capacity()){
+		    newData = new std::string[source.get_capacity()];
+		    delete [] data;
+		    data = newData;
+		    capacity = source.get_capacity();
+	    }
+	    used = source.size();
+	    copy(source.data, source.data+used, data);
+	    return *this;
+    }
+
    
 
 
