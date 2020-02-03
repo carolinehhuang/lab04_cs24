@@ -25,26 +25,16 @@ namespace lab04_2
     Words::~Words(){
 	    delete [] data;
     }
-    
-    void Words:: reserve(unsigned int newCapacity){
-	    std::string *newArray;
-	    if(newCapacity == capacity){
-		    return;
-	    }
-	    if(newCapacity < used){
-		    newCapacity = used;
-	    }
-	    newArray = new std::string[newCapacity];
-	    copy(data, data+used, newArray);
-	    delete [] data;
-	    data = newArray;
-	    capacity = newCapacity;
-    }
+   
 
 
     void Words::append(string word) {
         if(used == capacity){
-		reserve(used*2);
+		std::string *newArray = new std::string[used*2];
+		copy(data, data+used, newArray);
+		delete [] data;
+		data = newArray;
+		capacity = used*2;
 	}
 	data[used] = word;
         ++used;

@@ -11,11 +11,10 @@ namespace lab04_2
     {
     public:
         Words(unsigned int initial_capacity = 10); // revised
-        Words(const Words& source); // new
+        Words(const Words &source); // new
         ~Words(); // new
         
-        void reserve(unsigned int newCapacity);
-	void append(std::string word);
+        void append(std::string word);
         std::string& operator[] (unsigned int index);
         Words& operator=(const Words &source); // new
         
